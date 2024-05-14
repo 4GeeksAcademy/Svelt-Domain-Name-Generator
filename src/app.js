@@ -1,4 +1,3 @@
-/* eslint-disable */
 import "bootstrap";
 import "./style.css";
 import "./index.html";
@@ -9,7 +8,6 @@ function generateDomainNames() {
   let nouns = ["jogger", "racoon"];
   let ends = [".com", ".net"];
   const domainNames = [];
-
   for (const pronoun of pronouns) {
     for (const adjective of adjectives) {
       for (const noun of nouns) {
@@ -27,11 +25,12 @@ window.onload = () => {
   const button = document.querySelector("#domainbutton");
   const p = document.querySelector("#domain");
   button.onclick = () => {
-    p.innerHTML = generateDomainNames().join(
-      '<marquee><i class="fa-solid fa-flag-checkered" style="color: #511F1F;"></i></marquee>'
-    );
+    const domainList = generateDomainNames()
+      .map(
+        domain =>
+          `<span><i class="fa-solid fa-flag-checkered" style="color: #511F1F;"></i> ${domain}</span><br>`
+      )
+      .join("");
+    p.innerHTML = domainList;
   };
 };
-
-
-
